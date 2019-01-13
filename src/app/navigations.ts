@@ -1,0 +1,35 @@
+const navigations = [
+    {
+        id:'Home',
+        title:'Home',
+        IsVisible:true,
+        path:'/'
+    },
+    {
+        id:'About',
+        title:'About',
+        IsVisible:true,
+        path:'/about',
+        children:[
+            {
+                id:'Contact',
+                title:'Contact',
+                path:'/contact'
+            }
+        ]
+    },
+    {
+        id:'Contact',
+        title:'Contact',
+        IsVisible:true,
+        path:'/contact',
+        children:[
+            {
+                id:'Contact',
+                title:'Contact',
+                path:'/contact'
+            }
+        ]
+    }
+];
+export default navigations;

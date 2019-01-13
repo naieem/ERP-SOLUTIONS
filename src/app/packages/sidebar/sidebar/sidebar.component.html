@@ -20,13 +20,24 @@
 </div>
 <div class="mt-3">
     <mat-nav-list>
-        <a mat-list-item class="text-center" routerLink="/">Home</a>
-        <a mat-list-item class="text-center" *ngFor="let navigation of navigations" [routerLink]="navigation.route">{{navigation.title}}</a>
-        <!-- <a mat-list-item>
-            About
-        </a>
-        <a mat-list-item>
-            Contact
-        </a> -->
+        <!-- <a mat-list-item class="text-center" routerLink="/">Home</a> -->
+        <!-- <a mat-list-item class="text-center" *ngFor="let navigation of navigations" [routerLink]="navigation.route">{{navigation.title}}</a> -->
+        <div *ngFor="let navigation of navigations">
+            <div *ngIf="!navigation.children">
+                <a mat-list-item class="text-center" [routerLink]="navigation.path">{{navigation.title}}</a>
+            </div>
+            <div *ngIf="navigation.children && navigation.children.length">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{navigation.title}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <a mat-list-item class="text-center" *ngFor="let childNav of navigation.children" [routerLink]="childNav.path">{{childNav.title}}</a>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
     </mat-nav-list>
 </div>

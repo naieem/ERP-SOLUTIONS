@@ -1,4 +1,5 @@
 import {Injectable,EventEmitter} from '@angular/core';
+import navigations from "../../../navigations";
 import {SiteRoute} from '../../../routes';
 @Injectable({providedIn: 'root'})
 export class CoreService {
@@ -9,13 +10,10 @@ export class CoreService {
   }
   getVisibleRoutes(){
     let routes = [];
-    SiteRoute.map((value,index)=>{
+    navigations.map((value,index)=>{
       // console.log(value);
-      if(value.data && value.data.MenuShow){
-        routes.push({
-          route:value.data.Route,
-          title:value.data.MenuTitle
-        });
+      if(value.IsVisible){
+        routes.push(value);
       }
     });
     return routes;
