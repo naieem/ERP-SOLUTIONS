@@ -1,0 +1,11 @@
+$profile_background_color:#B2F34F;
+.profile_image_container {
+    background-color: $profile_background_color !important;
+}
+
+.profile_information_container {
+    background-color: $profile_background_color !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}

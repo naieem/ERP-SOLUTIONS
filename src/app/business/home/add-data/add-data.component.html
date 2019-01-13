@@ -1,0 +1,76 @@
+<div fxFlex>
+    <div fxLayout="row">
+        <table mat-table [dataSource]="data" fxFlex class="mat-elevation-z8" *ngIf="data && data.length">
+            <!-- Position Column -->
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <!-- <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container> -->
+
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center start">
+        <div fxFlex='50' fxFlex.xs='100'>
+            <img src="{{uploadedImageUrl}}" *ngIf="uploadedImageUrl" />
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                <h2>Add</h2>
+                <div fxLayoutAlign="space-between start">
+                    <mat-form-field>
+                        <input matInput color="warn" placeholder="First Name:" formControlName="firstName" value="">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Last Name:" formControlName="lastName" value="">
+                    </mat-form-field>
+                </div>
+
+                <div formGroupName="address" fxLayout="column">
+                    <h3>Address</h3>
+                    <mat-form-field>
+                        <input matInput placeholder="Street:" formControlName="street" value="">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="City:" formControlName="city" value="">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="State:" formControlName="state" value="">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Zip:" formControlName="zip" value="">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput formControlName="dob" [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <!-- <mat-form-field> -->
+                        <mat-label>File Upload</mat-label>
+                        <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+                    <!-- </mat-form-field> -->
+                </div>
+
+                <button mat-raised-button [disabled]="!profileForm.valid" color="warn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

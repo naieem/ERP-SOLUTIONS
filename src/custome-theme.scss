@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+@include mat-core();
+.app-gray-theme {
+	$theme1-primary: mat-palette($mat-grey, 100);
+	$theme1-accent: mat-palette($mat-grey, 500);
+	$theme1-warn: mat-palette($mat-grey, 900);
+	$theme1-theme: mat-light-theme($theme1-primary, $theme1-accent, $theme1-warn); 
+	@include angular-material-theme($theme1-theme); 
+}
+.app-indigo-theme {
+	$theme2-primary: mat-palette($mat-indigo, 100);
+	$theme2-accent: mat-palette($mat-indigo, 500);
+	$theme2-warn: mat-palette($mat-indigo, 900);
+	$theme2-theme: mat-light-theme($theme2-primary, $theme2-accent, $theme2-warn);
+    @include angular-material-theme($theme2-theme);
+}
+.app-purple-theme {
+	$theme3-primary: mat-palette($mat-purple, 100);
+	$theme3-accent: mat-palette($mat-purple, 500);
+	$theme3-warn: mat-palette($mat-purple, 900);
+	$theme3-theme: mat-light-theme($theme3-primary, $theme3-accent, $theme3-warn);
+    @include angular-material-theme($theme3-theme);
+}
+.app-pink-theme {
+	$theme4-primary: mat-palette($mat-pink, 100);
+	$theme4-accent: mat-palette($mat-pink, 500);
+	$theme4-warn: mat-palette($mat-pink, 900);
+	$theme4-theme: mat-light-theme($theme4-primary, $theme4-accent, $theme4-warn);
+    @include angular-material-theme($theme4-theme);
+}
