@@ -1,0 +1,24 @@
+<div fxLayout="row">
+    <div fxFlex="70" class="login_bg">
+    </div>
+    <div fxFlex="30">
+        <div fxFlex fxLayout="column">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
+                <h2 fxFlex="10">Add</h2>
+                <div fxLayoutAlign="space-between start" fxFlex fxLayout="column">
+                    <div fxFlex="10">
+                        <mat-form-field>
+                            <input matInput color="warn" placeholder="Email:" formControlName="email" value="">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="10">
+                        <mat-form-field>
+                            <input matInput placeholder="Password:" formControlName="password" value="">
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button [disabled]="!loginForm.valid" color="warn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

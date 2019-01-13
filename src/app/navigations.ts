@@ -30,6 +30,12 @@ const navigations = [
                 path:'/contact'
             }
         ]
+    },
+    {
+        id:'Contact',
+        title:'Login',
+        IsVisible:false,
+        path:'/login',
     }
 ];
 export default navigations;

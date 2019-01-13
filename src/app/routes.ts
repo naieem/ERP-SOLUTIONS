@@ -1,5 +1,12 @@
 const SiteRoute = [
     {
+        path: '',
+        loadChildren:'./business/home/home.module#HomeModule',
+        data: {
+            MenuShow: false
+        }
+    },
+    {
         path: 'about',
         loadChildren: './business/about/about.module#AboutModule',
         data: {
@@ -15,9 +22,10 @@ const SiteRoute = [
             MenuTitle: 'Contact',
             Route:'/contact'
         }
-    }, {
-        path: '',
-        loadChildren:'./business/home/home.module#HomeModule',
+    },
+    {
+        path: 'login',
+        loadChildren:'./packages/login/login.module#LoginModule',
         data: {
             MenuShow: false
         }

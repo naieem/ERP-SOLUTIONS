@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormBuilder,Validators } from '@angular/forms';
 import * as firebase from 'firebase';
 export interface PeriodicElement {
   name: string;
