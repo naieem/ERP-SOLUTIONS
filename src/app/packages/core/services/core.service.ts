@@ -4,6 +4,9 @@ import {SiteRoute} from '../../../routes';
 @Injectable({providedIn: 'root'})
 export class CoreService {
   changeTheme: EventEmitter<string> = new EventEmitter();
+  changeSideNavToolbarStatus:EventEmitter<boolean> = new EventEmitter();
+  hideToolbar:boolean;
+  hideSidenav:boolean;
   constructor() {}
   getRouteConfig() {
     return SiteRoute;
@@ -18,4 +21,10 @@ export class CoreService {
     });
     return routes;
   }
+  hideSideNavToolbar(){
+    this.hideSidenav = true;
+    this.hideToolbar = true;
+    this.changeSideNavToolbarStatus.emit(true);
+  }
+
 }

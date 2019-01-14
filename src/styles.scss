@@ -66,9 +66,13 @@ mat-sidenav {
 }
 
 .mainContainer {
-    padding: 20px;
+    height: 100%;
 }
 
 .sidenav-container {
     background-color: #71A81C !important;
+}
+
+.w-100-p {
+    width: 100%;
 }

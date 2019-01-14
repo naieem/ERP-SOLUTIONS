@@ -1,24 +1,26 @@
-<div fxLayout="row">
-    <div fxFlex="70" class="login_bg">
-    </div>
-    <div fxFlex="30">
-        <div fxFlex fxLayout="column">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
-                <h2 fxFlex="10">Add</h2>
-                <div fxLayoutAlign="space-between start" fxFlex fxLayout="column">
-                    <div fxFlex="10">
-                        <mat-form-field>
+<div class="loginContainer">
+    <div class="login_bg" fxFlex>
+        <div fxFlex="80" fxHide.xs fxFlex.sm="70">
+            &nbsp;
+        </div>
+        <div fxFlex="20" fxFlex.xs="100" fxFlex.sm="30" class="loginFormContainer" fxLayout="column">
+            <div fxFlex="35" class="logoContainer" fxLayoutAlign="center center">
+                <img src="https://tbncdn.freelogodesign.org/3d67aac7-f819-41a9-b0f6-75095b8fb712.png?1547445612256">
+            </div>
+            <div fxFlex class="loginFormContainer">
+                <form [formGroup]="loginForm" fxFlex fxLayoutAlign="strech center" (ngSubmit)="onSubmit()" fxLayout="column">
+                    <h2>Login</h2>
+                    <div fxFlex fxLayout="column" class="input-container">
+                        <mat-form-field class="w-100-p">
                             <input matInput color="warn" placeholder="Email:" formControlName="email" value="">
                         </mat-form-field>
-                    </div>
-                    <div fxFlex="10">
-                        <mat-form-field>
+                        <mat-form-field class="w-100-p">
                             <input matInput placeholder="Password:" formControlName="password" value="">
                         </mat-form-field>
+                        <button mat-raised-button color="warn">Login</button>
                     </div>
-                    <button mat-raised-button [disabled]="!loginForm.valid" color="warn">Login</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

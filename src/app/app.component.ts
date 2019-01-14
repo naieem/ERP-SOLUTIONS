@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { CoreService } from './packages/core';
@@ -8,7 +8,8 @@ import { CoreService } from './packages/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  hideSidenavToolbar=true;
   opened = true;
   over = 'side';
   expandHeight = '42px';
@@ -29,5 +30,12 @@ export class AppComponent {
     this.coreService.changeTheme.subscribe((themeName)=>{
       this.currentTheme = themeName;
     });
+    this.coreService.changeSideNavToolbarStatus.subscribe((result:boolean)=>{
+      if(result){
+        this.hideSidenavToolbar = true;
+      }
+    });
+  }
+  ngOnInit(){
   }
 }
