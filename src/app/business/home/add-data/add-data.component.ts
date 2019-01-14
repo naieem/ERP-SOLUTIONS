@@ -89,7 +89,7 @@ export class AddDataComponent implements OnInit {
   ngOnInit() {
     const query = this.database.collection("items").where('address.zip', '==', 'kutkut');
     query.get().then((result) => {
-      debugger;
+      
       result.forEach((data) => {
         console.log(data.data());
         let info = data.data();
@@ -122,7 +122,7 @@ export class AddDataComponent implements OnInit {
     // console.log(this.profileForm.get('address').value['dob']);
     const formValue = this.profileForm.value;
     formValue.address.dob = new Date(formValue.address.dob);
-    debugger;
+    
     this
       .database
       .collection('items')
@@ -139,7 +139,7 @@ export class AddDataComponent implements OnInit {
     // console.warn(this.profileForm.value);
   }
   handleFileInput(files: FileList) {
-    debugger;
+    
     this.fileTobeUploaded = files.item(0);
     const name = (+new Date()) + '-' + this.fileTobeUploaded.name;
     const metadata = {
@@ -147,7 +147,7 @@ export class AddDataComponent implements OnInit {
     };
     const fileRef = this.storageRef.child(name);
     fileRef.put(this.fileTobeUploaded, metadata).then((snapshot) => {
-      debugger;
+      
       console.log('Uploaded a blob or file!');
       fileRef.getDownloadURL().then((url) => {
         console.log(url);

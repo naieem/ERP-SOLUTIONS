@@ -32,10 +32,10 @@ export class CoreService {
     this.hideToolbar=false;
     this.changeSideNavToolbarStatus.emit(false);
   }
-  setUserLoggedInStatus(status){
+  setUserLoggedInStatus(status:boolean){
     this.isLoggedIn = status;
   }
-  getLoggedInUserStatus(){
+  getLoggedInUserStatus():boolean{
     return this.isLoggedIn;
   }
 

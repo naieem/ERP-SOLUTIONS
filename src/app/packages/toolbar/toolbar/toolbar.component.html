@@ -1,20 +1,19 @@
 <mat-toolbar color="warn">
     <mat-toolbar-row fxLayout fxLayoutAlign='space-between center'>
         <div>
-          <button mat-button (click)="ToggleSidebar(sidenav)">
-            <mat-icon>menu</mat-icon>
-          </button>
+            <button mat-button (click)="ToggleSidebar(sidenav)">
+        <mat-icon>menu</mat-icon>
+      </button>
         </div>
-        <div>Curent theme: {{currentTheme}}</div>
-        <div>
-          <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let theme of themes" (click)="ChangeTheme(theme.value)">
-              {{theme.name}}
-            </button>
-          </mat-menu>
+        <div *ngIf="coreService.getLoggedInUserStatus()">
+            <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">
+          Logout
+        </button>
+            </mat-menu>
         </div>
-      </mat-toolbar-row>
+    </mat-toolbar-row>
 </mat-toolbar>
