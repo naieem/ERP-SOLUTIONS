@@ -4,6 +4,7 @@ import { MatButtonModule, MatCheckboxModule,
   MatIconModule, MatMenuModule, MatSidenavModule,
   MatExpansionModule,MatToolbarModule,MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import SidebarModule from './packages/sidebar/sidebar.module';
 import ToolbarModule from './packages/toolbar/toolbar.module';
@@ -40,6 +41,7 @@ firebase.initializeApp(config);
     FlexLayoutModule,
     SidebarModule,
     ToolbarModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],

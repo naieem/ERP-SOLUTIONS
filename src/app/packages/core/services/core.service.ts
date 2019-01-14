@@ -5,8 +5,9 @@ import {SiteRoute} from '../../../routes';
 export class CoreService {
   changeTheme: EventEmitter<string> = new EventEmitter();
   changeSideNavToolbarStatus:EventEmitter<boolean> = new EventEmitter();
-  hideToolbar:boolean;
-  hideSidenav:boolean;
+  private hideToolbar:boolean;
+  private hideSidenav:boolean;
+  private isLoggedIn:boolean;
   constructor() {}
   getRouteConfig() {
     return SiteRoute;
@@ -25,6 +26,17 @@ export class CoreService {
     this.hideSidenav = true;
     this.hideToolbar = true;
     this.changeSideNavToolbarStatus.emit(true);
+  }
+  showSidenavToolbar(){
+    this.hideSidenav=false;
+    this.hideToolbar=false;
+    this.changeSideNavToolbarStatus.emit(false);
+  }
+  setUserLoggedInStatus(status){
+    this.isLoggedIn = status;
+  }
+  getLoggedInUserStatus(){
+    return this.isLoggedIn;
   }
 
 }
