@@ -3,10 +3,11 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import * as firebase from 'firebase';
 import {CoreService} from '../../core/services/core.service';
+import { AuthService } from '../../guard/auth.service';
 @Component({selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.scss']})
 export class LoginComponent implements OnInit {
   loginForm : any;
-  constructor(private fb : FormBuilder, private coreService : CoreService, private router : Router) {
+  constructor(private fb : FormBuilder, private coreService : CoreService,private authService:AuthService, private router : Router) {
     this.loginForm = this
       .fb
       .group({
@@ -36,11 +37,11 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit() {
-    
+
     // if (this.loginForm.value.email == 'nms@selise.ch' &&
     // this.loginForm.value.password == '123456') {   this     .coreService
-    // .showSidenavToolbar();   this     .coreService
-    // .setUserLoggedInStatus(true);   this     .router     .navigate(["/"]); }
+    // .showSidenavToolbar();   this     .coreService .setUserLoggedInStatus(true);
+    //  this     .router     .navigate(["/"]); }
     firebase
       .auth()
       .signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
@@ -50,9 +51,7 @@ export class LoginComponent implements OnInit {
           this
             .coreService
             .showSidenavToolbar();
-          this
-            .coreService
-            .setUserLoggedInStatus(true);
+          this.authService.setUserLoggedInUserStatus(true);
           this
             .router
             .navigate(['/']);
@@ -69,6 +68,13 @@ export class LoginComponent implements OnInit {
         console.log(error);
 
       });
+  }
+  showRegisterForm(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this
+      .router
+      .navigate(['./login/register']);
   }
 
 }

@@ -38,7 +38,6 @@ firebase.initializeApp(config);
     MatExpansionModule,
     MatCardModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     SidebarModule,
     ToolbarModule,
     RouterModule,

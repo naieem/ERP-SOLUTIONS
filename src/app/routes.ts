@@ -1,7 +1,9 @@
+import { AuthGuard } from './packages/guard/auth.guard';
 const SiteRoute = [
     {
         path: '',
         loadChildren:'./business/home/home.module#HomeModule',
+        canLoad:[AuthGuard],
         data: {
             MenuShow: false
         }
@@ -9,6 +11,7 @@ const SiteRoute = [
     {
         path: 'about',
         loadChildren: './business/about/about.module#AboutModule',
+        // canLoad:[AuthGuard],
         data: {
             MenuShow: true,
             MenuTitle: 'About',
@@ -17,6 +20,7 @@ const SiteRoute = [
     }, {
         path: 'contact',
         loadChildren: './business/contact/contact.module#ContactModule',
+        // canLoad:[AuthGuard],
         data: {
             MenuShow: true,
             MenuTitle: 'Contact',
