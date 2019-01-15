@@ -2,16 +2,22 @@ import { AuthGuard } from './packages/guard/auth.guard';
 const SiteRoute = [
     {
         path: '',
+        // redirectTo: '/login', pathMatch: 'full',
         loadChildren:'./business/home/home.module#HomeModule',
-        canLoad:[AuthGuard],
-        data: {
-            MenuShow: false
-        }
+        canActivate:[AuthGuard],
     },
+    // {
+    //     path: 'list',
+    //     loadChildren:'./business/home/home.module#HomeModule',
+    //     canActivate:[AuthGuard],
+    //     data: {
+    //         MenuShow: false
+    //     }
+    // },
     {
         path: 'about',
         loadChildren: './business/about/about.module#AboutModule',
-        // canLoad:[AuthGuard],
+        canActivate:[AuthGuard],
         data: {
             MenuShow: true,
             MenuTitle: 'About',
@@ -20,7 +26,7 @@ const SiteRoute = [
     }, {
         path: 'contact',
         loadChildren: './business/contact/contact.module#ContactModule',
-        // canLoad:[AuthGuard],
+        canActivate:[AuthGuard],
         data: {
             MenuShow: true,
             MenuTitle: 'Contact',
@@ -30,6 +36,7 @@ const SiteRoute = [
     {
         path: 'login',
         loadChildren:'./packages/login/login.module#LoginModule',
+        canActivate:[AuthGuard],
         data: {
             MenuShow: false
         }

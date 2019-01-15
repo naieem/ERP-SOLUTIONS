@@ -3,11 +3,21 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import * as firebase from 'firebase';
 import {CoreService} from '../../core/services/core.service';
-import { AuthService } from '../../guard/auth.service';
 @Component({selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.scss']})
 export class LoginComponent implements OnInit {
   loginForm : any;
-  constructor(private fb : FormBuilder, private coreService : CoreService,private authService:AuthService, private router : Router) {
+  constructor(private fb : FormBuilder, private coreService : CoreService, private router : Router) {
+    // firebase
+    //   .auth()
+    //   .onAuthStateChanged((user) => {
+    //     debugger;
+    //     if (!user) {
+    //       this
+    //         .router
+    //         .navigate(['login']);
+    //     }
+    //   });
+
     this.loginForm = this
       .fb
       .group({
@@ -37,21 +47,29 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit() {
-
-    // if (this.loginForm.value.email == 'nms@selise.ch' &&
-    // this.loginForm.value.password == '123456') {   this     .coreService
-    // .showSidenavToolbar();   this     .coreService .setUserLoggedInStatus(true);
-    //  this     .router     .navigate(["/"]); }
     firebase
       .auth()
       .signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
       .then((userinfo) => {
         console.log(userinfo);
+        firebase
+          .auth()
+          .currentUser
+          .getIdToken()
+          .then((idToken) => {
+            localStorage.setItem('accessToken',idToken)
+          })
+          .catch((error) => {
+            console.log('error found in login submit call');
+            console.log(error);
+          });
         if (userinfo) {
           this
             .coreService
             .showSidenavToolbar();
-          this.authService.setUserLoggedInUserStatus(true);
+          this
+            .coreService
+            .setUserLoggedInStatus(true);
           this
             .router
             .navigate(['/']);

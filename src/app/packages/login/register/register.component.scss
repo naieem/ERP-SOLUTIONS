@@ -1,0 +1,18 @@
+.registerContainer {
+    height: 100%;
+    .register_bg {
+        background-image: url('https://images.unsplash.com/photo-1536982942848-09777d0cd8f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80');
+        background-position: center center;
+        background-size: cover;
+        .registerFormContainer {
+            background-color: #fff;
+        }
+        .logoContainer {
+            padding-top: 40px;
+        }
+        .input-container {
+            padding: 0 20px;
+            width: 95%;
+        }
+    }
+}

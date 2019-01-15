@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs';
 import {Router} from "@angular/router";
-import * as firebase from 'firebase';
 import {AuthService} from './packages/guard/auth.service';
 import {CoreService} from './packages/core';
 
@@ -37,27 +36,10 @@ export class AppComponent implements OnInit {
       .coreService
       .changeSideNavToolbarStatus
       .subscribe((result : boolean) => {
+        debugger;
         this.hideSidenavToolbar = result;
       });
   }
   ngOnInit() {
-    console.log(this.router);
-    debugger;
-    firebase
-      .auth()
-      .onAuthStateChanged((user) => {
-        debugger;
-        if (user) {
-          this
-            .authService
-            .setUserLoggedInUserStatus(true);
-        } else {
-          this
-            .authService
-            .setUserLoggedInUserStatus(true);
-          // this   .router   .navigate(['/login']); location.href = '/login';
-        }
-      });
-    // setTimeout(() => {   this.router.navigate(['/login']); }, 10000);
   }
 }

@@ -1,0 +1,39 @@
+<div class="registerContainer">
+    <div class="register_bg" fxFlex fxLayoutAlign="center stretch">
+        <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="50" class="registerFormContainer" fxLayout="column">
+            <div fxFlex="35" class="logoContainer" fxLayoutAlign="center center">
+                <img src="https://tbncdn.freelogodesign.org/3d67aac7-f819-41a9-b0f6-75095b8fb712.png?1547445612256">
+            </div>
+            <div fxFlex class="registerFormContainer">
+                <form [formGroup]="registerForm" fxFlex fxLayoutAlign="strech center" (ngSubmit)="onSubmit()" fxLayout="column">
+                    <h2>Registrer</h2>
+                    <!-- registration form -->
+                    <div fxFlex fxLayout="column" class="input-container" fxLayoutAlign="center center">
+                        <mat-form-field class="w-100-p">
+                            <input matInput color="warn" placeholder="Email:" formControlName="email" value="">
+                        </mat-form-field>
+                        <mat-form-field class="w-100-p">
+                            <input matInput color="warn" placeholder="Firstname:" formControlName="fname" value="">
+                        </mat-form-field>
+                        <mat-form-field class="w-100-p">
+                            <input matInput color="warn" placeholder="Lastname:" formControlName="lname" value="">
+                        </mat-form-field>
+                        <mat-form-field class="w-100-p">
+                            <input matInput color="warn" placeholder="Address:" formControlName="address" value="">
+                        </mat-form-field>
+                        <mat-form-field class="w-100-p">
+                            <input matInput placeholder="Password:" type="password" formControlName="password" value="">
+                        </mat-form-field>
+                        <mat-form-field class="w-100-p">
+                            <input matInput placeholder="Confirm Password:" type="password" formControlName="cpassword" value="">
+                        </mat-form-field>
+                        <button mat-raised-button color="warn" style="margin-top:20px;">Register</button>
+                        <div style="margin-top:20px;">
+                            <a href="#" (click)="showLoginForm($event)">Login</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

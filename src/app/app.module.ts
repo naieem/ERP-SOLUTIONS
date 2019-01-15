@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule,
   MatIconModule, MatMenuModule, MatSidenavModule,
-  MatExpansionModule,MatToolbarModule,MatCardModule } from '@angular/material';
+  MatExpansionModule,MatToolbarModule,MatCardModule,MatFormFieldModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -33,6 +33,7 @@ firebase.initializeApp(config);
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
     MatSidenavModule,
     FlexLayoutModule,
     MatExpansionModule,

@@ -32,10 +32,10 @@ const navigations = [
         ]
     },
     {
-        id:'Contact',
-        title:'Login',
-        IsVisible:false,
-        path:'/login',
+        id:'Home',
+        title:'List',
+        IsVisible:true,
+        path:'/list',
     }
 ];
 export default navigations;
