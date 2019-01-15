@@ -25,6 +25,11 @@ CanLoad {
             .checkLogin(route)
             .then((status) => {
                 debugger;
+                if (!status) {
+                    this
+                        .router
+                        .navigate(['/login']);
+                }
                 return status;
             });
     }
@@ -80,9 +85,6 @@ CanLoad {
                 .setUserLoggedInUserStatus(false);
             return true;
         } else {
-            this
-                .router
-                .navigate(['/login']);
             return false;
         }
     }

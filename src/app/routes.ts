@@ -2,8 +2,9 @@ import {AuthGuard} from './packages/guard/auth.guard';
 const SiteRoute = [
     {
         path: '',
+        // redirectTo: '/list', pathMatch: 'full'
         loadChildren: './business/home/home.module#HomeModule',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
     }, {
         path: 'about',
         loadChildren: './business/about/about.module#AboutModule',
@@ -22,7 +23,16 @@ const SiteRoute = [
             MenuTitle: 'Contact',
             Route: '/contact'
         }
-    }, {
+    },
+    // {
+    //     path: 'list',
+    //     loadChildren: './business/home/home.module#HomeModule',
+    //     canActivate: [AuthGuard],
+    //     data: {
+    //         MenuShow: true,
+    //     }
+    // }, 
+    {
         path: 'login',
         loadChildren: './packages/login/login.module#LoginModule',
         canActivate: [AuthGuard],

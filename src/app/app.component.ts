@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       .subscribe((themeName) => {
         this.currentTheme = themeName;
       });
-    // hiding toolbar and sidenav
+    // show/hiding toolbar and sidenav
     this
       .coreService
       .changeSideNavToolbarStatus
