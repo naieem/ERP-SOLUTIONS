@@ -21,10 +21,12 @@ CanLoad {
     canActivate(route : ActivatedRouteSnapshot, state : RouterStateSnapshot) : any {
         debugger;
         let url: string = state.url;
-        return this.checkLogin(route).then((status)=>{
-            debugger;
-            return status;
-        });
+        return this
+            .checkLogin(route)
+            .then((status) => {
+                debugger;
+                return status;
+            });
     }
 
     canActivateChild(route : ActivatedRouteSnapshot, state : RouterStateSnapshot) : boolean {
@@ -44,21 +46,21 @@ CanLoad {
     }
 
     checkLogin(route) {
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             firebase
-            .auth()
-            .onAuthStateChanged((info) => {
-                debugger;
-                if (info) {
-                    resolve(this.reRouteOnAuthSUccess(route));
-                } else {
-                    resolve(this.reRouteOnAuthFailed(route));
-                }
-            })
+                .auth()
+                .onAuthStateChanged((info) => {
+                    debugger;
+                    if (info) {
+                        resolve(this.reRouteOnAuthSUccess(route));
+                    } else {
+                        resolve(this.reRouteOnAuthFailed(route));
+                    }
+                })
         });
     }
 
-    reRouteOnAuthSUccess(route):boolean {
+    reRouteOnAuthSUccess(route) : boolean {
         this
             .authService
             .setUserLoggedInUserStatus(true);
@@ -71,8 +73,8 @@ CanLoad {
             return true;
         }
     }
-    reRouteOnAuthFailed(route):boolean {
-        if (route.routeConfig.path == 'login') {
+    reRouteOnAuthFailed(route) : boolean {
+        if(route.routeConfig.path == 'login') {
             this
                 .authService
                 .setUserLoggedInUserStatus(false);

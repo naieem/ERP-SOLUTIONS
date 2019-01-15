@@ -7,16 +7,6 @@ import {CoreService} from '../../core/services/core.service';
 export class LoginComponent implements OnInit {
   loginForm : any;
   constructor(private fb : FormBuilder, private coreService : CoreService, private router : Router) {
-    // firebase
-    //   .auth()
-    //   .onAuthStateChanged((user) => {
-    //     debugger;
-    //     if (!user) {
-    //       this
-    //         .router
-    //         .navigate(['login']);
-    //     }
-    //   });
 
     this.loginForm = this
       .fb
