@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
+import {Angulartics2} from 'angulartics2';
 import * as firebase from 'firebase';
 import {CoreService} from '../../core/services/core.service';
+
 @Component({selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.scss']})
 export class LoginComponent implements OnInit {
   loginForm : any;
-  constructor(private fb : FormBuilder, private coreService : CoreService, private router : Router) {
+  constructor(private fb : FormBuilder, private coreService : CoreService, private router : Router, private angulartics2 : Angulartics2) {
 
     this.loginForm = this
       .fb
@@ -42,12 +44,45 @@ export class LoginComponent implements OnInit {
       .signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
       .then((userinfo) => {
         console.log(userinfo);
+        debugger;
+        // if(window && window['ga']){
+        //   window['ga']('send', {
+        //     hitType: 'event',
+        //     eventCategory: 'My Category',
+        //     eventAction: 'My Action',
+        //     eventLabel: 'My Label',
+        //     dimension1: 'the value for my dimension'
+        //   });
+        // }
+        
+        this
+          .angulartics2
+          .eventTrack
+          .next({
+            action: 'UserLogin',
+            properties: {
+              label:userinfo.user.email + ' logged in' ,
+              category: 'UserLogin',
+              dimension1: userinfo.user.email + ' logged in'
+            }
+          });
+          debugger;
+          if(window && window['ga']){
+            window['ga'].push(['_setCustomVar',
+            1,                   // This custom var is set to slot #1.  Required parameter.
+            'Items Removed',     // The name acts as a kind of category for the user activity.  Required parameter.
+            'Yes',               // This value of the custom variable.  Required parameter.
+            2                    // Sets the scope to session-level.  Optional parameter.
+         ]);
+          }
+         
         firebase
           .auth()
           .currentUser
           .getIdToken()
           .then((idToken) => {
-            localStorage.setItem('accessToken',idToken)
+            debugger;
+            localStorage.setItem('accessToken', idToken)
           })
           .catch((error) => {
             console.log('error found in login submit call');

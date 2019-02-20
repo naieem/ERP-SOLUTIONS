@@ -4,6 +4,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Angulartics2Module } from 'angulartics2';
 
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule, Routes} from '@angular/router';
@@ -28,6 +29,7 @@ const routes : Routes = [
     MatFormFieldModule,
     MatButtonModule,
     FormsModule,ReactiveFormsModule,
+    Angulartics2Module,
     RouterModule.forChild(routes)
   ]
 })

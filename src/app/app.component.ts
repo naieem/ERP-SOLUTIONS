@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
 import {Subscription} from 'rxjs';
-import {Router} from "@angular/router";
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import {Router,NavigationEnd} from "@angular/router";
 import {AuthService} from './packages/guard/auth.service';
 import {CoreService} from './packages/core';
 
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
   currentTheme = 'pink';
   watcher : Subscription;
 
-  constructor(media : ObservableMedia, private authService : AuthService, private coreService : CoreService, private router : Router) {
+  constructor(media : ObservableMedia,angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, private authService : AuthService, private coreService : CoreService, private router : Router) {
+    angulartics2GoogleAnalytics.startTracking();
     this.watcher = media.subscribe((change : MediaChange) => {
       if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
         this.opened = false;
