@@ -1,6 +1,7 @@
 node {
     stage('Build') {
         bat 'echo "hello world"'
-        // bat 'npm run build:ci'
+        bat 'git clone https://github.com/naieem/ERP-SOLUTIONS.git'
+        bat ' npm run build:ci'
     }
 }
