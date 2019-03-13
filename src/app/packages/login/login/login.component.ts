@@ -45,37 +45,22 @@ export class LoginComponent implements OnInit {
       .then((userinfo) => {
         console.log(userinfo);
         debugger;
-        // if(window && window['ga']){
-        //   window['ga']('send', {
-        //     hitType: 'event',
-        //     eventCategory: 'My Category',
-        //     eventAction: 'My Action',
-        //     eventLabel: 'My Label',
-        //     dimension1: 'the value for my dimension'
-        //   });
-        // }
-        
+        // if(window && window['ga']){   window['ga']('send', {     hitType: 'event',
+        //  eventCategory: 'My Category',     eventAction: 'My Action',     eventLabel:
+        // 'My Label',     dimension1: 'the value for my dimension'   }); }
+
         this
           .angulartics2
           .eventTrack
           .next({
             action: 'UserLogin',
             properties: {
-              label:userinfo.user.email + ' logged in' ,
+              label: userinfo.user.email + ' logged in',
               category: 'UserLogin',
               dimension1: userinfo.user.email + ' logged in'
             }
           });
-          debugger;
-          if(window && window['ga']){
-            window['ga'].push(['_setCustomVar',
-            1,                   // This custom var is set to slot #1.  Required parameter.
-            'Items Removed',     // The name acts as a kind of category for the user activity.  Required parameter.
-            'Yes',               // This value of the custom variable.  Required parameter.
-            2                    // Sets the scope to session-level.  Optional parameter.
-         ]);
-          }
-         
+
         firebase
           .auth()
           .currentUser
