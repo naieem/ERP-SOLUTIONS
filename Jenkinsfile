@@ -1,6 +1,6 @@
 node {
     stage('Build') {
         bat 'echo "hello world"'
-        bat 'npm run build:ci'
+        // bat 'npm run build:ci'
     }
 }
