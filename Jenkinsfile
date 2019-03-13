@@ -10,6 +10,6 @@
 // }
 node {
     stage('Build') {
-       sh 'echo "hello world"'
+        bat 'echo "hello world"'
     }
 }
